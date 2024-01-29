@@ -1,0 +1,85 @@
+def read_board(m,n):
+    board = []
+    for i in range(m):
+        row = list(map(int,input().split()))
+        board.append(row)
+    return board
+
+def get_maximum_distance_racers(m,n,board):
+    result = []
+    found_row = False
+    for row in range(m):
+        #print(board[row])
+        for col in range(n):
+            if board[row][col] ==1:
+                result.append(col+1)
+                found_row = True
+    #return result
+        #exit from outer loop if found_row is True
+        if found_row:
+            break
+        
+    if found_row==False:
+        for col in range(n):
+            result.append(col+1)
+    return result
+    
+    
+
+def main():
+    m,n = list(map(int,input().split()))
+    #print(m,n)
+    board = read_board(m,n)
+    #print(board)
+    print(get_maximum_distance_racers(m,n,board))
+    
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# m,n = map(int,input().split())
+# matrix = []
+# for i in range(m):
+#     row = list(map(int,input().split()))
+#     matrix.append(row)
+    
+# #print(matrix) 
+# new_matrix = []
+# for i in range(m):
+#     check_row = matrix[i]
+#     #print(check_row)
+#     if check_row.count(1):
+#         #print(check_row)
+#         new_matrix.append(check_row)
+    
+# #print(new_matrix)
+    
+# if new_matrix !=[]:
+#     new_matrix=new_matrix[0]
+# #print(new_matrix)
+        
+    
+ 
+# racers = []
+
+# if new_matrix !=[]:
+#     for j in range(n):
+#         if new_matrix[j] == 1:
+#             racers.append(j+1)
+#     #print(racers)    
+# else:
+#     #print(list(range(1,n+1)))
+#     pass
+
+    
