@@ -1,0 +1,96 @@
+#APPROACH 1 MY OWN SOLUTION 
+def get_maximum_distance_of_racers(m,n,board):
+    racers = []
+    for row in range(m):
+        if board[row].count(1) == 0:
+            for col in range(n):
+                if board[row-1][col] ==1:
+                    racers.append(col+1)
+            return racers
+        else:
+            if row == m-1:
+                for col in range(n):
+                    if board[row][col] == 1:
+                        racers.append(col+1)
+                return racers
+                
+def read_board(m,n):
+    board = []
+    for i in range(m):
+        row = list(map(int,input().split()))
+        board.append(row)
+    return board
+        
+
+def main():
+    m,n = list(map(int,input().split()))
+    board = read_board(m,n)
+    #print(board)
+    racers = get_maximum_distance_of_racers(m,n,board)
+    if len(racers) == 0:
+        print(list(range(1,n+1)))
+    else:
+        print(racers)
+main()
+
+
+
+
+
+#APPROACH 2
+def get_racers(matrix,m,n):
+    racers = []
+    is_found = False 
+    matrix = matrix[::-1]
+    #return matrix
+    for row in range(m):
+        for col in range(n):
+            if matrix[row][col] ==1:
+                is_found =True 
+                racers.append(col+1)
+        if is_found == True:
+            break 
+    if is_found==False:
+        for col in range(n):
+            racers.append(col+1) 
+    return racers
+
+def get_matrix(m,n):
+    matrix = []
+    for i in range(m):
+        row = list(map(int,input().split())) 
+        matrix.append(row)
+    return matrix
+        
+
+def main():
+    m,n = input().split()
+    m,n = int(m),int(n)
+    matrix = get_matrix(m,n)
+    #print(matrix)
+    result = get_racers(matrix,m,n)
+    print(result)
+    
+main()
+
+# 5 5
+# 1 1 1 1 1
+# 1 1 1 1 1
+# 1 0 1 1 0
+# 0 0 1 1 0
+# 0 0 0 0 0
+#output = [3,4]
+
+
+# 5 4
+# 1 1 1 1
+# 1 1 1 1
+# 1 0 1 1
+# 0 0 1 0
+# 0 0 0 0
+# output = [3]
+
+
+
+
+
